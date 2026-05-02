@@ -1,77 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCA ECC Credit System</title>
-    <meta name="description" content="PCA ECC Enterprise Credit & Grocery Loan Management System">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background: #0f172a;
-        }
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: none;
-            display: block;
-        }
-    </style>
-</head>
-<body>
-    <iframe
-        id="app-frame"
-        src="https://script.google.com/macros/s/AKfycbwTD8UDvhGgys55iw10CbUKM56m2jltSHz8Oh7ni03Tn5tSKowjs3XVuZtHkEYIpRS76A/exec"
-        allow="camera; microphone; notifications; fullscreen"
-        loading="eager">
-    </iframe>
-
-    <script>
-        // 1. FULLSCREEN & NOTIFICATION PERMISSION TRIGGER
-        // We wait for the first click anywhere to satisfy browser security requirements
-        window.addEventListener('click', () => {
-            // Request Fullscreen
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(e => console.warn("Fullscreen blocked", e));
-            }
-
-            // Request Native Notification Permission
-            if ("Notification" in window && Notification.permission !== "granted") {
-                Notification.requestPermission();
-            }
-        }, { once: true });
-
-        // 2. SYSTEM NOTIFICATION LISTENER
-        // Listens for 'NOTIFY' messages from the inner GAS application
-        window.addEventListener('message', (event) => {
-            if (event.data && event.data.type === 'NOTIFY') {
-                if ("Notification" in window && Notification.permission === "granted") {
-                    const notif = new Notification(event.data.title, {
-                        body: event.data.body,
-                        icon: 'https://cdn-icons-png.flaticon.com/512/3502/3502601.png', // Delivery Icon
-                        badge: 'https://cdn-icons-png.flaticon.com/512/3502/3502601.png',
-                        vibrate: [200, 100, 200]
-                    });
-
-                    // Optional: Open the app when notification is clicked
-                    notif.onclick = () => {
-                        window.focus();
-                        notif.close();
-                    };
-                }
-            }
-        });
-
-        // 3. PERSISTENT FULLSCREEN RECOVERY
-        // If the user accidentally exits, try to prompt for recovery on next interaction
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                console.log("User exited fullscreen. Will prompt on next interaction.");
-            }
-        });
-    </script>
-</body>
-</html>
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>PCA ECC Credit System</title>
+        <style>
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                    body, html {
+                                    width: 100%;
+                                    height: 100vh;
+                                    overflow: hidden;
+                                    background: #0f172a;
+                    }
+                    iframe {
+                                    width: 100%;
+                                    height: calc(100vh + 52px);
+                                    border: none;
+                                    margin-top: -52px;
+                                    display: block;
+                    }
+                </style>
+    </head>
+    <body>
+            <iframe 
+                        src="https://script.google.com/macros/s/AKfycbwTCNkGTv3uVur49XB_yPgHoT5M-3q0cwMWT9pEIfYugUm4uxeu51_ytrrDKinzAWgF/exec"
+                        allow="camera; microphone"
+                        loading="eager">
+            </iframe>iframe>
+    </body>
+</html>html>
+    </body>
+        </style></title>
+    </head>
