@@ -23,10 +23,30 @@
   </head>
   <body>
         <iframe
+                  id="appFrame"
                   src="https://script.google.com/macros/s/AKfycbwTD8UDvhGgys55iw10CbUKM56m2jltSHz8Oh7ni03Tn5tSKowjs3XVuZtHkEYIpRS76A/exec"
-                  allow="camera; microphone"
-        
+                  allow="camera; microphone; fullscreen"
                   loading="eager">
         </iframe>iframe>
-  </body>body>
+
+        <script>
+                  // Trigger Fullscreen on first user interaction
+                  const triggerFullscreen = () => {
+                                const docElm = document.documentElement;
+                                const request = docElm.requestFullscreen || docElm.mozRequestFullScreen || docElm.webkitRequestFullscreen || docElm.msRequestFullscreen;
+                                if (request) {
+                                                  request.call(docElm).catch(e => console.log('Fullscreen blocked:', e));
+                                }
+                                // Remove listeners
+                                window.removeEventListener('click', triggerFullscreen);
+                                window.removeEventListener('touchstart', triggerFullscreen);
+                  };
+
+                  window.addEventListener('click', triggerFullscreen, { once: true });
+                  window.addEventListener('touchstart', triggerFullscreen, { once: true });
+        </script>
+  </body>
 </html>html>
+        </script>
+  </body>
+      </style></title>
